@@ -23,6 +23,7 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2",
     "webpack": "^4.40.2",
     "wepack-cli": "0.0.1-security"
   },
@@ -38,10 +39,14 @@
     "webpack-dev-server": "^3.8.1"
   },
   "standard": {
-    "ignore": ["/api/**"],
+    "ignore": [
+      "/api/**"
+    ],
     "parser": "babel-eslint"
   },
   "eslintConfig": {
-    "extends": ["./node_modules/standard/eslintrc.json"]
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
   }
 }
