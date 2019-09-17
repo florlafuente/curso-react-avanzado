@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "petgram-server",
-  "alias": ["petgram-api"],
+  "name": "petgram-server-flor",
+  "alias": ["petgram-api-flor"],
   "builds": [{ "src": "index.js", "use": "@now/node" }],
   "routes": [{
     "headers": {
