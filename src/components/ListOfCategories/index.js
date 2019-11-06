@@ -5,20 +5,23 @@ import { List, Item } from './styles'
 
 function useCategoriesData() {
   const [categories, setCategories] = useState([])
+  const [ loading, setLoading ] = useState(false)
   useEffect(function () {
+    setLoading(true)
     window.fetch('https://petgram-api-flor.now.sh/categories')
       .then(res => res.json())
       .then(res => {
         setCategories(res)
-      }, []) // el array vacio se agrega para que se ejecute solo la primera vez que se renderiza el componente y no se haga un loop infinito
-  })
+        setLoading(false)
+      })
+  }, [])
 
-  return { categories }
+  return { categories, loading }
 }
 
 export const ListOfCategories = () => {
   
-  const { categories } = useCategoriesData()
+  const { categories, loading } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
   
 
@@ -34,9 +37,14 @@ export const ListOfCategories = () => {
 
   const renderList = (fixed) => (
     <List fixed={fixed}>
-      { categories.map(category => <Item key={category.id}> <Category {...category} /> </Item>) }
-     </List>
+      {
+        loading
+          ? <Item key='loading'><Category /></Item>
+          : categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+      }
+    </List>
   )
+
   return (
     <Fragment>
       {renderList()}
