@@ -7,7 +7,15 @@ const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1452857297128-d9c29adba
 export const PhotoCard = ({ id, likes = 0 , src = DEFAULT_IMAGE }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
-  const [liked, setLiked] = useState(false)
+  const key = `like-${id}`
+  const [liked, setLiked] = useState(() => {
+    try {
+      const like = window.localStorage.getItem(key)
+      return like
+    } catch (e) {
+      return false
+    }
+  })
 
   useEffect(function () {
     Promise.resolve(
@@ -28,20 +36,30 @@ export const PhotoCard = ({ id, likes = 0 , src = DEFAULT_IMAGE }) => {
     
   }, [element])
 
+  const Icon = liked ? MdFavorite : MdFavoriteBorder
+
+  const setLocalStorage = value => {
+    try {
+      window.localStorage.setItem(key, value)
+      setLiked(value)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <Article ref={element}>
     {
       show && 
       <Fragment>
-      <a href={`/detail/${id}`}>
-      <ImgWrapper>
-        <Img src={src} />
-      </ImgWrapper>
-    </a>
-    <Button onClick={() => setLocalStorage(!liked)}>
-      <MdFavorite size='32px' /> {likes} likes!
-    </Button>
+        <a href={`/detail/${id}`}>
+          <ImgWrapper>
+            <Img src={src} />
+          </ImgWrapper>
+        </a>
+        <Button onClick={() => setLocalStorage(!liked)}>
+          <Icon size='32px' /> {likes} likes!
+        </Button>
       </Fragment>
     }
     </Article>
