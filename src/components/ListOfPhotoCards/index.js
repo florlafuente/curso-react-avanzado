@@ -8,4 +8,3 @@ export const ListOfPhotoCardsComponent = ({ data:  { photos = [] } } = {} ) => {
       </ul>
     )
   }
-
