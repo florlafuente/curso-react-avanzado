@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/midudev/curso-platzi-react-avanzado#readme",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "apollo-boost": "^0.4.4",
     "graphql": "^14.5.8",
     "intersection-observer": "^0.7.0",

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'reach-router'
 
 export const Anchor = styled.a`
   display: flex;
