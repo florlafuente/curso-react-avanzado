@@ -1,13 +1,12 @@
-import React, { Fragment } from 'react'
-import { ListOfCategories } from '../components/ListOfCategories'
-import { ListOfPhotoCards } from '../containers/ListOfPhotoCards'
+import React from 'react'
+import  { ListOfCategories } from '../components/ListOfCategories'
+import  { ListOfPhotoCards } from '../containers/ListOfPhotoCards'
 
-
-export const Home = () => {
+export const Home = ({id }) => {
   return (
-    <Fragment>
+    <>
       <ListOfCategories />
-      <ListOfPhotoCards  categoryId={1} />
-    </Fragment>
+      <ListOfPhotoCards  categoryId={id} />
+    </>
   )
 }
