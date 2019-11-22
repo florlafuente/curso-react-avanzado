@@ -1,6 +1,7 @@
 import React from 'react'
 import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery'
 import  { Logo } from './components/Logo'
+import { Navbar } from './components/Navbar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
@@ -18,7 +19,8 @@ export const App = () => {
         <Home path="/" />
         <Home path="/pet/:id" />
         <Detail path="/detail/:detailId" />
-      </Router> 
+      </Router>
+      <Navbar />
     </>
   )
 }
